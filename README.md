@@ -2,5 +2,6 @@
 
 |Проект|Описание|Стек|
 |-|-|-|
-|[Организация Data Lake](https://github.com/PonomarevVladimir/Portfolio/tree/main/spark_project)|Построение витрин для изучения аудитории соцсети|pyspark, airflow|
-|[DWH для нескольких источников](https://github.com/PonomarevVladimir/Portfolio/tree/main/dwh_project)|Построение витрины для оплаты работы курьеров|postgresql, airflow|
+|[Организация data lake для соцсети](https://github.com/PonomarevVladimir/Portfolio/tree/main/spark_project)|Разработка пайплайна сборки витрин для изучения аудитории соцсети|pyspark, airflow|
+|[Организация dwh для службы доставки](https://github.com/PonomarevVladimir/Portfolio/tree/main/dwh_project)|Построение хранилища и etl для создания витрины для оплаты работы курьеров|postgresql, airflow|
+|[Организация dwh для финтех](https://github.com/PonomarevVladimir/Portfolio/tree/main/vertica_project)|Выгрузка сырых данных из хранилища и построение витрины транзакционной активности пользователей финтех организации|postgresql, vertica, airflow|
