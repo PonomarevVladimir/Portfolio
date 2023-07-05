@@ -16,7 +16,7 @@ with DAG(
 ) as dag:
     task = BashOperator(
         task_id='prepare_zone_stats',
-        bash_command = f"spark-submit src\\scripts\\zs.py '{date.today()}' '37' 'append' '{input_path}'",
+        bash_command = f"spark-submit scripts\\zs.py '{date.today()}' '37' 'append' '{input_path}'",
         dag = dag
     )
 
