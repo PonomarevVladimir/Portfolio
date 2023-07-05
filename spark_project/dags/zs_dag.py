@@ -5,7 +5,7 @@ from airflow.models import Variable
 from datetime import date
 import pendulum
 
-input_path = Variable.get('INPUT_PATH') # hdfs://rc1a-dataproc-m-dg5lgqqm7jju58f9.mdb.yandexcloud.net:8020/user/vladimirpo/data/geo/
+input_path = Variable.get('INPUT_PATH') 
 
 with DAG(
         'dag_zs',
