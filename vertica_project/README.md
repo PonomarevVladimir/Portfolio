@@ -8,6 +8,7 @@
 ### Структура проекта:
 * [sql_scripts](https://github.com/PonomarevVladimir/Portfolio/tree/main/vertica_project/sql_scripts) - скрипты создания и наполнения таблиц, а также тесты
 * [dags](https://github.com/PonomarevVladimir/Portfolio/tree/main/vertica_project/dags) - даги airflow
+* [img](https://github.com/PonomarevVladimir/Portfolio/tree/main/vertica_project/img) - скриншоты дашборда
 
 ### Что было сделано:
 1. Спроектирована структура хранилища DWH. Оно состоит из Staging-слоя и CDM.
