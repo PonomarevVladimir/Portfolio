@@ -6,7 +6,7 @@
 Необходимо загрузить данные из PostgreSQL в Vertica, собрать витрину, показывающую ежедневную активность пользователей в одной валюте, а также построить дашборд. 
 
 ### Структура проекта:
-* [sql_scripts](https://github.com/PonomarevVladimir/Portfolio/tree/main/vertica_project/sql_scripts) - скрипты создания и наполнения таблиц, а также тесты
+* [sql_scripts](https://github.com/PonomarevVladimir/Portfolio/tree/main/vertica_project/sql_scripts) - скрипты создания таблиц
 * [dags](https://github.com/PonomarevVladimir/Portfolio/tree/main/vertica_project/dags) - даги airflow
 * [img](https://github.com/PonomarevVladimir/Portfolio/tree/main/vertica_project/img) - скриншоты дашборда
 
