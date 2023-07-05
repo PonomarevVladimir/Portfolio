@@ -5,6 +5,7 @@ import logging
 
 from datetime import datetime
 from airflow import DAG
+from airflow import Variable
 from airflow.operators.python_operator import PythonOperator
 from airflow.providers.postgres.hooks.postgres import PostgresHook
 
@@ -12,7 +13,7 @@ postgres_conn_id = 'postgresql_de'
 
 nickname = 'Vova'
 cohort = '5'
-api_key = '25c27781-8fde-4b30-a22e-524044a7580f'
+api_key = Variable.get("api_key_variable")
 
 headers = {
     'X-Nickname': nickname,
@@ -20,7 +21,7 @@ headers = {
     'X-API-KEY': api_key
 }
 
-d_url = 'https://d5d04q7d963eapoepsqr.apigw.yandexcloud.net/deliveries?offset='
+d_url = Variable.get("deliveries_url")
 
 def upload(url, headers,conn):
     pg_hook = PostgresHook(conn)
