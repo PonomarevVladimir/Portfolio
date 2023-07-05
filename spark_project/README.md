@@ -9,8 +9,9 @@
 * Витрина рекомендации друзей - содерждит пары пользователей, которые ранее не общались, живут рядом и имеют общие интересы
 
 ### Структура проекта:
-* scripts - скрипты наполнения витрин
-* dags - даги airflow
+* [scripts](https://github.com/PonomarevVladimir/Portfolio/tree/main/spark_project/scripts) - скрипты наполнения витрин
+* [dags](https://github.com/PonomarevVladimir/Portfolio/tree/main/spark_project/dags) - даги airflow
 
 ### Что было сделано:
-1. 
+1. Реализованы вспомогательные функции для определения расстояния по координатам и приведения времени к местному.ё
+Исходный код прилагается: "[\scripts\project_functions.py](https://github.com/PonomarevVladimir/Portfolio/blob/main/spark_project/scripts/project_functions.py)" 
