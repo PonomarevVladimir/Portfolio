@@ -13,7 +13,7 @@ postgres_conn_id = 'postgresql_de'
 
 nickname = 'Vova'
 cohort = '5'
-api_key = Variable.get("api_key_variable")
+api_key = Variable.get("api_key_couriers")
 
 headers = {
     'X-Nickname': nickname,
