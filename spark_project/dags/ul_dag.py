@@ -22,7 +22,7 @@ with DAG(
 ) as dag:
     task = BashOperator(
         task_id="user_locations",
-        bash_command = f"spark-submit src\\scripts\\ul.py '{date.today()}' '{calculate_number_of_days}' 'overwrite' '{input_path}'",
+        bash_command = f"spark-submit scripts\\ul.py '{date.today()}' '{calculate_number_of_days}' 'overwrite' '{input_path}'",
 	    dag = dag
     )
 
