@@ -7,7 +7,7 @@ from datetime import datetime
 import pendulum
 
 
-input_path = Variable.get('INPUT_PATH') # hdfs://rc1a-dataproc-m-dg5lgqqm7jju58f9.mdb.yandexcloud.net:8020/user/vladimirpo/data/geo/
+input_path = Variable.get('INPUT_PATH') 
 
 def calculate_number_of_days():
     DATA_START_DATE =  datetime.strptime(Variable.get('DATA_START_DATE'), "YYYY-mm-dd").date()
