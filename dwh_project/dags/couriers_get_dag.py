@@ -21,7 +21,7 @@ headers = {
     'X-API-KEY': api_key
 }
 
-d_url = 'https://d5d04q7d963eapoepsqr.apigw.yandexcloud.net/couriers?offset='
+d_url = Variable.get("couriers_url")
 
 def upload(url, headers, conn):
     pg_hook = PostgresHook(conn)
