@@ -6,8 +6,8 @@
 Конечная задача — реализовать автоматически обновляемую витрину с рассчётом месячных выплат курьерам.
 
 ### Структура проекта:
-* sql_scripts - скрипты создания и наполнения таблиц, а также тесты
-* dags - даги airflow
+* [sql_scripts](https://github.com/PonomarevVladimir/Portfolio/tree/main/dwh_project/sql_scripts) - скрипты создания и наполнения таблиц, а также тесты
+* [dags](https://github.com/PonomarevVladimir/Portfolio/tree/main/dwh_project/dags) - даги airflow
 
 ### Что было сделано:
 1. Спроектирована структура хранилища DWH. Оно состоит из Staging-слоя, DDS и CDM.
