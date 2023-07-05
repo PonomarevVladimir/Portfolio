@@ -23,3 +23,14 @@
 Для реализации этого процесса были использованы следующие библиотеки Python: vertica_python, logging, datetime, airflow.\
 Исходный код прилагается: "[\dags\stg_to_mart_dag.py](https://github.com/PonomarevVladimir/Portfolio/blob/main/vertica_project/dags/stg_to_mart_dag.py)"\
 Запрос, производящий агрегацию, вынесен в отдельный файл формата txt для удобства форматирования: "[\dags\sql_mart.txt](https://github.com/PonomarevVladimir/Portfolio/blob/main/vertica_project/dags/sql_mart.txt)"
+6. Построен дашборд при помощи Metabase, который показывает:\
+Общий оборот компании\
+![Оборот](https://github.com/PonomarevVladimir/Portfolio/blob/main/vertica_project/img/Screenshot%202023-06-20%20at%2011.49.33.png)\
+Статистику транзакций\
+![Транзакции](https://github.com/PonomarevVladimir/de-project-final/blob/main/src/img/Screenshot%202023-06-20%20at%2011.49.39.png)\
+Статистику пользователей и обновления таблиц\
+![Пользователи](https://github.com/PonomarevVladimir/Portfolio/blob/main/vertica_project/img/Screenshot%202023-06-20%20at%2011.49.43.png)\
+Также реализованы фильтры дат и валют:\
+![Оборот с фильтрами](https://github.com/PonomarevVladimir/Portfolio/blob/main/vertica_project/img/Screenshot%202023-06-20%20at%2011.50.30.png)\
+![Транзакции с фильтрами](https://github.com/PonomarevVladimir/Portfolio/blob/main/vertica_project/img/Screenshot%202023-06-20%20at%2011.50.34.png)\
+![Пользователи с фильтрами](https://github.com/PonomarevVladimir/Portfolio/blob/main/vertica_project/img/Screenshot%202023-06-20%20at%2011.50.38.png)
