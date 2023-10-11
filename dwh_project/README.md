@@ -1,3 +1,53 @@
+## Multiple data sources DWH project
+
+### Task description:
+We need to build dwh for delivery service. It would contain staging layer (raw data downloaded from api), detail data store and common data marts layer.\
+From data sources we get couriers and deliveries data, moreover there was developed dwh for restaurants data.\
+Final result would be the couriers payments data mart with automatic data update.
+
+### Project structure:
+* [sql_scripts](https://github.com/PonomarevVladimir/Portfolio/tree/main/dwh_project/sql_scripts) - creating tables, uploading data and testing scripts
+* [dags](https://github.com/PonomarevVladimir/Portfolio/tree/main/dwh_project/dags) - airflow dags
+
+### What was done:
+1. DWH structure was designed. It contains STG, DDS and CDM layers.
+2. Staging-layer was created. Raw data from sources are stored here as is.\
+It consists of tables apisystem_couriers, apisystem_deliveries and auxiliary table loads_check containing results of soures' data uploads.\
+Tables creation scripts:
+"[\sql_scripts\create_stg.sql](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/sql_scripts/create_stg.sql)", "[\sql_scripts\create_stg_loads_check.sql](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/sql_scripts/create_stg_loads_check.sql)"
+3. DDS layer was created. It contains data from the staging layer reduced to the data types required for the mart.\
+It consists of tables dm_couriers, dm_timestamps и dm_deliveries. It's data schema is the star with dm_deliveries as the fact table.\
+Tables creation scripts:
+"[\sql_scripts\create_dds.sql](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/sql_scripts/create_dds.sql)"
+4. CDM layer was created. It contains agregated data from the DDS layer.\
+It consists of monthly couriers payments mart dm_courier_ledger.\
+Tables creation scripts:
+ "[\sql_scripts\create_cdm.sql](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/sql_scripts/create_cdm.sql)"
+5. The sources api connection ELT process was developed. It was created with Airflow using Python. DAG consists of tasks for data uploading from sources to STG.\
+Used Python libraries list: requests, pandas, json, logging, datetime, airflow.\
+ETL python scripts:
+"[\dags\couriers_get_dag.py](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/dags/couriers_get_dag.py)", "[\dags\deliveries_get_dag.py](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/dags/deliveries_get_dag.py)"
+6. The uploading reduced types data from STG to DDS ELT process was developed. It was created with Airflow using Python. DAG consists of tasks for data uploading from STG to DDS.\
+Used Python libraries list: logging, datetime, airflow.\
+ETL python scripts:
+"[\dags\stg_to_dds_dag.py](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/dags/stg_to_dds_dag.py)"\
+SQL scripts:
+"[\sql_scripts\insert_couriers.sql](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/sql_scripts/insert_couriers.sql)", "[\sql_scripts\insert_timestamps.sql](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/sql_scripts/insert_timestamps.sql)", "[\sql_scripts\insert_deliveries.sql](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/sql_scripts/insert_deliveries.sql)"
+7. The uploading aggregated data from DDS to CDM ELT process was developed. It was created with Airflow using Python. DAG consists of tasks for data uploading from DDS to CDM.\
+Used Python libraries list: logging, datetime, airflow.\
+ETL python scripts:
+"[\dags\dds_to_cdm_dag.py](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/dags/dds_to_cdm_dag.py)"\
+SQL scripts:
+"[\sql_scripts\insert_ledger.sql](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/sql_scripts/insert_ledger.sql)"
+
+#### Compliance with the requirements is confirmed by tests results: #
+1. All positive tests for data quality of DDS and CDM layers were passed successfully.\
+Tests scripts:
+"[\sql_scripts\positive_tests.sql](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/sql_scripts/positive_tests.sql)"
+2. All negative tests for lack of data from sources were passed successfully.\
+Tests scripts:
+"[\sql_scripts\negative_couriers_test.sql](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/sql_scripts/negative_couriers_test.sql)", "[\sql_scripts\negative_timestamps_test.sql](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/sql_scripts/negative_timestamps_test.sql)", "[\sql_scripts\negative_deliveries_test.sql](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/sql_scripts/negative_deliveries_test.sql)"
+
 ## Проектная работа по DWH для нескольких источников
 
 ### Описание задачи:
@@ -25,7 +75,7 @@
 Исходный код прилагается: "[\dags\couriers_get_dag.py](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/dags/couriers_get_dag.py)", "[\dags\deliveries_get_dag.py](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/dags/deliveries_get_dag.py)"
 6. Реализован ETL-процесс, который переносит данные из stging-слоя в dds-слой и приводит их к необходимым типам данных.\
 Процесс загрузки данных из staging-слоя в dds-слой разрабатываемой системы реализован с помощью DAG-оркестратора Airflow на языке программирования Python. DAG содержит задачи на соответствующую загрузку данных.\
-Для реализации этого процесса были использованы следующие библиотеки Python:  logging, datetime, airflow.\
+Для реализации этого процесса были использованы следующие библиотеки Python: logging, datetime, airflow.\
 Исходный код прилагается: "[\dags\stg_to_dds_dag.py](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/dags/stg_to_dds_dag.py)"\
 Код sql запросов хранится в файлах: "[\sql_scripts\insert_couriers.sql](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/sql_scripts/insert_couriers.sql)", "[\sql_scripts\insert_timestamps.sql](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/sql_scripts/insert_timestamps.sql)", "[\sql_scripts\insert_deliveries.sql](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/sql_scripts/insert_deliveries.sql)"
 7. Реализован ETL-процесс, который переносит данные из dds-слоя в cdm-слой и аггрегирует их.\
