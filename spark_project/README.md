@@ -16,17 +16,17 @@ List of data marts:
 1. Auxiliary functions for distances between cites calculations using their coordinates and reducing UTC time to local one were developed.
 Python code: "[\scripts\project_functions.py](https://github.com/PonomarevVladimir/Portfolio/blob/main/spark_project/scripts/project_functions.py)"
 2. ETL process for creating and updating the users data mart was developed.\
-It was created with Airflow using Python. DAG consists of tasks wich start spark applications with defined parameters.\
+It was created with Airflow using Python. DAG consists of tasks which start spark applications with defined parameters.\
 Used Python libraries list: datetime, airflow, pyspark, math, sys.\
 DAG code: "[\dags\ul_dag.py](https://github.com/PonomarevVladimir/Portfolio/blob/main/spark_project/dags/ul_dag.py)"\
 PySpark code: "[\scripts\ul.py](https://github.com/PonomarevVladimir/Portfolio/blob/main/spark_project/scripts/ul.py)"
 3. ETL process for creating and updating the zones data mart was developed.\
-It was created with Airflow using Python. DAG consists of tasks wich start spark applications with defined parameters.\
+It was created with Airflow using Python. DAG consists of tasks which start spark applications with defined parameters.\
 Used Python libraries list: datetime, airflow, pyspark, math, sys.\
 DAG code: "[\dags\zs_dag_init.py](https://github.com/PonomarevVladimir/Portfolio/blob/main/spark_project/dags/zs_dag_init.py "Initial")", "[\dags\zs_dag.py](https://github.com/PonomarevVladimir/Portfolio/blob/main/spark_project/dags/zs_dag.py "Increment")"\
 PySpark code: "[\scripts\ul.py](https://github.com/PonomarevVladimir/Portfolio/blob/main/spark_project/scripts/zs.py)"
 4. ETL process for creating and updating the friends recomendations data mart was developed.\
-It was created with Airflow using Python. DAG consists of tasks wich start spark applications with defined parameters.\
+It was created with Airflow using Python. DAG consists of tasks which start spark applications with defined parameters.\
 Used Python libraries list: datetime, airflow, pyspark, math, sys.\
 DAG code: "[\dags\rec_dag_init.py](https://github.com/PonomarevVladimir/Portfolio/blob/main/spark_project/dags/rec_dag_init.py "Initial")", "[\dags\rec_dag.py](https://github.com/PonomarevVladimir/Portfolio/blob/main/spark_project/dags/rec_dag.py "Increment")"\
 PySpark code: "[\scripts\rec.py](https://github.com/PonomarevVladimir/Portfolio/blob/main/spark_project/scripts/rec.py)"
