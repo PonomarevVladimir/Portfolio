@@ -11,7 +11,7 @@ Final result would be the couriers payments data mart with automatic data update
 
 ### What was done:
 1. DWH structure was designed. It contains STG, DDS and CDM layers.
-2. Staging-layer was created. Raw data from sources are stored here as is.\
+2. Staging layer was created. Raw data from sources are stored here as is.\
 It consists of tables apisystem_couriers, apisystem_deliveries and auxiliary table loads_check containing results of soures' data uploads.\
 Tables creation scripts:
 "[\sql_scripts\create_stg.sql](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/sql_scripts/create_stg.sql)", "[\sql_scripts\create_stg_loads_check.sql](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/sql_scripts/create_stg_loads_check.sql)"
@@ -19,21 +19,21 @@ Tables creation scripts:
 It consists of tables dm_couriers, dm_timestamps и dm_deliveries. It's data schema is the star with dm_deliveries as the fact table.\
 Tables creation scripts:
 "[\sql_scripts\create_dds.sql](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/sql_scripts/create_dds.sql)"
-4. CDM layer was created. It contains agregated data from the DDS layer.\
+4. CDM layer was created. It contains aggregated data from the DDS layer.\
 It consists of monthly couriers payments mart dm_courier_ledger.\
 Tables creation scripts:
  "[\sql_scripts\create_cdm.sql](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/sql_scripts/create_cdm.sql)"
-5. The sources api connection ELT process was developed. It was created with Airflow using Python. DAG consists of tasks for data uploading from sources to STG.\
+5. The ETL process for sources api connection was developed. It was created with Airflow using Python. DAG consists of tasks for data uploading from sources to STG.\
 Used Python libraries list: requests, pandas, json, logging, datetime, airflow.\
 ETL python scripts:
 "[\dags\couriers_get_dag.py](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/dags/couriers_get_dag.py)", "[\dags\deliveries_get_dag.py](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/dags/deliveries_get_dag.py)"
-6. The uploading reduced types data from STG to DDS ELT process was developed. It was created with Airflow using Python. DAG consists of tasks for data uploading from STG to DDS.\
+6. The ETL process for uploading data with reduced types from STG to DDS was developed. It was created with Airflow using Python. DAG consists of tasks for data uploading from STG to DDS.\
 Used Python libraries list: logging, datetime, airflow.\
 ETL python scripts:
 "[\dags\stg_to_dds_dag.py](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/dags/stg_to_dds_dag.py)"\
 SQL scripts:
 "[\sql_scripts\insert_couriers.sql](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/sql_scripts/insert_couriers.sql)", "[\sql_scripts\insert_timestamps.sql](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/sql_scripts/insert_timestamps.sql)", "[\sql_scripts\insert_deliveries.sql](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/sql_scripts/insert_deliveries.sql)"
-7. The uploading aggregated data from DDS to CDM ELT process was developed. It was created with Airflow using Python. DAG consists of tasks for data uploading from DDS to CDM.\
+7. The ETL for uploading aggregated data from DDS to CDM process was developed. It was created with Airflow using Python. DAG consists of tasks for data uploading from DDS to CDM.\
 Used Python libraries list: logging, datetime, airflow.\
 ETL python scripts:
 "[\dags\dds_to_cdm_dag.py](https://github.com/PonomarevVladimir/Portfolio/blob/main/dwh_project/dags/dds_to_cdm_dag.py)"\
